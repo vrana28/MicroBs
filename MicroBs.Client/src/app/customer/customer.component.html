@@ -1,0 +1,68 @@
+<!--Main Navigation-->
+<header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <div class="position-sticky">
+            <div class="list-group list-group-flush mx-3 mt-4">
+                <a href="/employees" class="list-group-item list-group-item-action py-2 ripple"><i
+                        class="fas fa-lock fa-fw me-3"></i><span>Employee</span></a>
+                <a href="/customers" class="list-group-item list-group-item-action py-2 ripple"><i
+                        class="fas fa-chart-line fa-fw me-3"></i><span>Customers</span></a>
+                <a href="/warehouses" class="list-group-item list-group-item-action py-2 ripple">
+                    <i class="fas fa-chart-pie fa-fw me-3"></i><span>Warehouses</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- Sidebar -->
+</header>
+<!--Main Navigation-->
+
+<!--Main layout-->
+<main style="margin-top: 58px;">
+    <div class="p-2 m-2">
+        <div>
+            <h4>CUSTOMERS</h4>
+        </div>
+        <div style="text-align-last: end">
+            <button type="button" class="btn btn-primary">
+                ADD CUSTOMER
+            </button>
+        </div>
+        <div class="col-md-6">
+            <label class="col-md-6 col-form-label padding-bottom-Mini">Employee</label>
+            <div class="col-md-12" [formGroup]="searchCustomerForm">
+                <select class="form-control" formControlName="employee">
+                    <option [ngValue]="null" disabled>Choose your Employee</option>
+                    <option *ngFor="let item of employees" [value]="item.id"> {{ item.name }}</option>
+                </select>
+            </div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-secondary m-2" (click)="Search()">
+                SEARCH CUSTOMER
+            </button>
+        </div>
+    </div>
+    <div class="container pt-4">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">PIB</th>
+                    <th scope="col">Employee</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customers">
+                    <td>{{customer.id}}</td>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.pib}}</td>
+                    <td>{{customer.employeeName}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<!--Main layout-->
