@@ -3,6 +3,7 @@ import { Validators, FormGroup, FormBuilder } from "@angular/forms";
 import { Router } from "@angular/router";
 import { UserService } from "../services/user.service";
 import { User } from "../models/user";
+import { ToastService } from "../services/toast.service";
 
 @Component({
     selector: 'app-login',
@@ -17,7 +18,7 @@ export class UserLoginPage implements OnInit {
     username: string = '';
     password: string = '';
 
-    constructor(private fb: FormBuilder, private router: Router, private userService: UserService){
+    constructor(private fb: FormBuilder, private router: Router, private userService: UserService, private toastService: ToastService){
         this.loginForm = this.fb.group({
             username: ['', Validators.required],
             password: ['', Validators.required]
@@ -33,16 +34,20 @@ export class UserLoginPage implements OnInit {
             // Add your authentication logic here
             console.log('Form submitted:', this.loginForm.value);
             // You can send the data to a service for authentication
-
-            this.userService.LogIn(this.loginForm.value).subscribe( response => {
-              this.loginUser = response;
-              console.log(this.loginUser);
-              this.router.navigate([`/employees`]);
-            },
-            error => {
-              console.error(error);
-              this.loginForm = error.error.message;
-            });
+            try {
+                
+                this.userService.LogIn(this.loginForm.value).subscribe( response => {
+                  this.loginUser = response;
+                  this.toastService.ShowSuccess('Success','User has been loged in.');
+                  this.router.navigate([`/employees`]);
+                },
+                error => {
+                  console.error(error);
+                  this.loginForm = error.error.message;
+                });
+            } catch (error) {
+                this.toastService.ShowSuccess('Error','Wrong password or username.');
+            }
         }
     }
 

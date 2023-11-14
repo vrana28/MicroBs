@@ -8,6 +8,8 @@ import { UserLoginPage } from './user-login/user-login';
 import { UserRegistrationPage } from './user-registration/user-registration.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ToastService } from './services/toast.service';
+import { AddCustomer } from './customer/dialog/add-customer';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { CustomerComponent } from './customer/customer.component';
     UserRegistrationPage,
     EmployeeComponent,
     CustomerComponent,
+    AddCustomer,
 
   ],
   imports: [
@@ -27,7 +30,9 @@ import { CustomerComponent } from './customer/customer.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    ToastService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

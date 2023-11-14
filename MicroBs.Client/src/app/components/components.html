@@ -1,0 +1,404 @@
+<div class="container-xl bg-white">
+    <!-- Breadcrumbs -->
+    <div aria-label="breadcrumb">
+        <ol class="breadcrumb mb-0 pt-3">
+            <li class="breadcrumb-item breadcrumb-home">
+                <a [routerLink]="['/home']"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="breadcrumb-item">
+                <a [routerLink]="['/components']">Components</a>
+            </li>
+        </ol>
+    </div>
+
+    <!-- Title -->
+    <div class="pt-3">
+        <h4>Components</h4>
+    </div>
+
+    <hr />
+    <h5 class="color-primary">Form component</h5>
+    <div class="row ms-0 me-0">
+        <div class="col-12 col-md-4">
+            <div class="form-group mt-3">
+                <div class="form-check">
+                    <input class="form-check-input form-radio-button" type="radio" id="flexRadioDefault3" value="C"
+                        name="inputRadio2" />
+                    <label class="form-check-label" for="flexRadioDefault3">
+                        Bootstrap Radio Button A
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input form-radio-button" type="radio" id="flexRadioDefault4" value="D"
+                        name="inputRadio2" />
+                    <label class="form-check-label" for="flexRadioDefault4">
+                        Bootstrap Radio Button B
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group pt-3">
+                <div class="form-check">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Bootstrap Checkbox
+                    </label>
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                </div>
+            </div>
+
+            <div class="form-group pt-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                    <label class="form-check-label" for="flexSwitchCheckDefault">Bootstrap switch</label>
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Bootstrap Input</label>
+                <div>
+                    <input type="text" class="form-control form-input" placeholder="Search" />
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Bootstrap Input With Search Icon</label>
+                <div>
+                    <input type="text" class="form-control form-input-search" placeholder="Search" />
+                </div>
+            </div>
+
+            <div class="form-group pt-3">
+                <label for="textBox2">Bootstrap Floating Label Input</label>
+                <div class="form-floating">
+                    <input type="text" id="textBox2" placeholder="Floating Label Input" class="form-control" />
+                    <label for="textBox2">Floating Label Input</label>
+                </div>
+            </div>
+
+            <div class="form-group pt-3">
+                <label for="dropdown">Bootstrap Dropdown</label>
+                <select class="form-select">
+                    <option value="1">Value 1</option>
+                    <option value="2">Value 2</option>
+                    <option value="3">Value 3</option>
+                </select>
+            </div>
+
+            <div class="form-group pt-3">
+                <label for="dropdown">Bootstrap Multiselect Dropdown</label>
+                <select class="form-select px-0" multiple aria-label="multiple select example">
+                    <option class="px-2" value="1">
+                        Value 1
+                    </option>
+                    <option class="px-2" value="2">
+                        Value 2
+                    </option>
+                    <option class="px-2" value="3">
+                        Value 3
+                    </option>
+                    <option class="px-2" value="4">
+                        Value 4
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-group pt-3">
+                <label for="inputGroup">Bootstrap Input Group</label>
+                <div class="form-input-group input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control text-right" />
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="dropdown">Primeng Dropdown</label>
+
+                <p-dropdown [options]="selectOptions" optionLabel="name" [filter]="false"
+                    dropdownIcon="fas fa-chevron-down fa-xs" placeholder="Select status">
+                </p-dropdown>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Primeng Multiselect</label>
+                <p-multiSelect defaultLabel="Select multiple" optionLabel="name" class="col-8 form-multi-select"
+                    dropdownIcon="fas fa-chevron-down fa-xs" [options]="multiSelectOptions" (onChange)="$event.originalEvent.stopPropagation()"></p-multiSelect>
+            </div>
+
+            <div [formGroup]="dateRangeForm" class="form-group mt-3">
+                <label>Custom date range picker</label>
+
+                <div class="input-group form-date-picker" (click)="datePicker.show($event)">
+                    <input type="text" class="form-control border-end-0" role="button" [value]="dateRangeLabel" readonly />
+                    <div class="input-group-append" role="button">
+                        <span class="input-group-text"><i class="fas fa-calendar-alt" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+
+                <p-overlayPanel styleClass="form-date-picker-panel row mx-0 shadow-sm" #datePicker>
+                    <div class="row mx-0">
+                        <div class="col-3 px-0 date-options">
+                            <div class="mt-3" >
+                                <a class="dropdown-item ps-3 pe-1 pt-2 pb-2" (click)="onDatePickerOptionClick($event, 'all')">All</a>
+                                <a class="dropdown-item ps-3 pe-1 pt-2 pb-2" (click)="onDatePickerOptionClick($event, 'today')">Today</a>
+                                <a class="dropdown-item ps-3 pe-1 pt-2 pb-2" (click)="onDatePickerOptionClick($event, 'yesterday')">Yesterday</a>
+                                <a class="dropdown-item ps-3 pe-1 pt-2 pb-2" (click)="onDatePickerOptionClick($event, 'sinceLastWeek')">Since Last Week</a>
+                                <a class="dropdown-item ps-3 pe-1 pt-2 pb-2" (click)="onDatePickerOptionClick($event, 'sinceLastMonth')">Since Last Month</a>
+                                <a class="dropdown-item ps-3 pe-1 pt-2 pb-2" (click)="onDatePickerOptionClick($event, 'dateRange')">Date/Range</a>
+                            </div>
+                        </div>
+                        <div class="col-9 px-0">
+                            <p-calendar [numberOfMonths]="2" [inline]="true" class="mt-3" [style]="{'width':'100%'}"
+                                [inputStyle]="{'width':'100%'}" selectionMode="range" formControlName="range" (click)="onDatePickerOptionClick($event, 'dateRange')">
+                                <ng-template pTemplate="header">
+                                    <div class="date-picker-header text-center mt-2 mb-2">
+                                        {{dateFrom | date: 'dd MMM yy'}} - {{dateTo | date: 'dd MMM yy'}}
+                                    </div>
+                                </ng-template>
+                            </p-calendar>
+                        </div>
+                    </div>
+                </p-overlayPanel>
+
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Primeng Datepicker</label>
+                <p-calendar styleClass="form-single-datepicker" [showIcon]="true"
+                    icon="fas fa-calendar-alt pe-2"></p-calendar>
+            </div>
+
+            <div class="form-group mt-3">
+                <label>Bootstrap Textarea</label>
+                <textarea class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid -->
+    <hr />
+    <h5 class="color-primary mt-3">Grid</h5>
+    <div class="pb-3">
+        <app-flexi-grid [id]="'DataGrid'" [data]="gridData" (onChangeSort)="GetGridData($event)"
+            (onChangePage)="GetGridData($event)" (onChangePageSize)="GetGridData($event)"
+            (onChangeSearch)="GetGridData($event)">
+            <ng-container header>
+                <thead>
+                    <tr>
+                        <th class="text-left" scope="col" flexiGridSortBy="Id" flexiGridId="DataGrid">
+                            Id
+                            <app-flexi-grid-icon [columnName]="'Id'" [flexiGridId]="'DataGrid'"></app-flexi-grid-icon>
+                        </th>
+                        <th class="text-left" scope="col" flexiGridSortBy="String" flexiGridId="DataGrid">
+                            String
+                            <app-flexi-grid-icon [columnName]="'String'"
+                                [flexiGridId]="'DataGrid'"></app-flexi-grid-icon>
+                        </th>
+                        <th class="text-right" scope="col" flexiGridSortBy="Percentage" flexiGridId="DataGrid">
+                            Percentage
+                            <app-flexi-grid-icon [columnName]="'Percentage'"
+                                [flexiGridId]="'DataGrid'"></app-flexi-grid-icon>
+                        </th>
+                        <th class="text-right" scope="col" flexiGridSortBy="Money" flexiGridId="DataGrid">
+                            Money
+                            <app-flexi-grid-icon [columnName]="'Money'"
+                                [flexiGridId]="'DataGrid'"></app-flexi-grid-icon>
+                        </th>
+                        <th class="text-right" scope="col" flexiGridSortBy="DateTime" flexiGridId="DataGrid">
+                            Changed Date
+                            <app-flexi-grid-icon [columnName]="'DateTime'"
+                                [flexiGridId]="'DataGrid'"></app-flexi-grid-icon>
+                        </th>
+                    </tr>
+                </thead>
+            </ng-container>
+
+            <ng-container body>
+                <tbody>
+                    <tr scope="row" *ngFor="let item of gridData.data">
+                        <td class="text-left">{{item.id}}</td>
+                        <td class="text-left">{{item.string}}</td>
+                        <td class="text-right">{{item.percentageFormatted}}</td>
+                        <td class="text-right">{{item.moneyFormatted}}</td>
+                        <td class="text-right">{{item.dateTimeFormatted}}</td>
+                    </tr>
+                </tbody>
+            </ng-container>
+
+            <ng-container no-data>
+                <tfoot>
+                    <tr>
+                        <td [attr.colspan]="6" class="text-center no-data">
+                            No records
+                        </td>
+                    </tr>
+                </tfoot>
+            </ng-container>
+        </app-flexi-grid>
+    </div>
+
+    <!-- Buttons -->
+    <hr />
+    <h5 class="mb-3 color-primary">Buttons</h5>
+    <div class="ps-2 ms-1 mb-2">
+        <button type="button" class="btn btn-primary me-3">Primary</button>
+        <button type="button" class="btn btn-secondary me-3">Secondary</button>
+        <button type="button" class="btn btn-success me-3">Success</button>
+        <button type="button" class="btn btn-danger me-3">Danger</button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-link btn-link-primary">
+            Primary Link
+        </button>
+
+        <button type="button" class="btn btn-link btn-link-success">
+            Success Link
+        </button>
+
+        <button type="button" class="btn btn-link btn-link-secondary">
+            Secondary Link
+        </button>
+
+        <button type="button" class="btn btn-link btn-link-black">
+            Black Link
+        </button>
+
+        <button type="button" class="btn btn-link btn-link-danger">
+            Danger Link
+        </button>
+    </div>
+
+    <!-- Alerts -->
+    <hr />
+    <h5 class="mb-3 color-primary">Alerts</h5>
+    <div>
+        <div class="alert alert-success" role="alert">
+            This is a success alert—check it out!
+        </div>
+        <div class="alert alert-danger" role="alert">
+            This is a danger alert—check it out!
+        </div>
+    </div>
+
+    <!-- Modal Window -->
+    <hr />
+    <h5 class="color-primary">Modal Window</h5>
+    <div>
+        Click here to open bootstrap modal window.
+        <button class="btn btn-secondary" (click)="showYesNoDialoque()">
+            Open Yes/No dialoque
+        </button>
+
+        <app-yes-no-dialog #yesNoDialog (onYesAnswer)="hideYesNoDialoque($event)"
+            (onNoAnswer)="hideYesNoDialoque2($event)">
+        </app-yes-no-dialog>
+    </div>
+
+    <!-- Form components -->
+    <hr />
+    <h5 class="color-primary">Special components</h5>
+    <div [formGroup]="generalForm" class="col-12 col-md-4">
+        <div class="form-group pt-3">
+            <label class="form-label">Bootstrap range</label>
+            <input type="range" min="0" max="100" class="form-range" formControlName="range" />
+        </div>
+
+        <div class="form-group pt-3">
+            <label for="colorPicker">Bootstrap Color picker</label>
+            <input type="color" class="form-control form-control-color" title="Choose your color"
+                formControlName="colorPicker" />
+        </div>
+    </div>
+
+    <div class="pt-3">
+        <i>More details about components: </i>
+        <a href="https://getbootstrap.com/docs/5.3/forms/overview/" target="_blank">Boostrap Components</a>,
+        <a href="https://ng-bootstrap.github.io/#/components/accordion/examples" target="_blank">Ngb Components</a>
+        <br />
+    </div>
+
+    <!-- Client side validation -->
+    <hr />
+    <h5 class="color-primary">Client-side validation</h5>
+    <div [formGroup]="clientSideForm" class="col-12 col-md-4">
+        <div class="form-group">
+            <label for="textBoxValue">Text value <span class="asterisks">*</span></label>
+            <input type="text" maxlength="99" class="form-control form-input validation-control" formControlName="textBoxValue" />
+            <div *ngIf="clientSideForm_HasError('textBoxValue')" class="validation-feedback">
+                <div *ngIf="clientSideForm.controls.textBoxValue.errors?.required">
+                    'Text value' is required
+                </div>
+                <div *ngIf="clientSideForm.controls.textBoxValue.errors?.maxlength">
+                    Max length of this field is 100 characters
+                </div>
+            </div>
+        </div>
+        <div class="form-group pt-3">
+            <label for="textBoxEmailValue">Text email value <span class="asterisks">*</span></label>
+            <input type="text" maxlength="99" class="form-control form-input validation-control"
+                formControlName="textBoxEmailValue" />
+            <div *ngIf="clientSideForm_HasError('textBoxEmailValue')" class="validation-feedback">
+                <div *ngIf="clientSideForm.controls.textBoxEmailValue.errors?.required">
+                    'Text email value' is required
+                </div>
+                <div *ngIf="clientSideForm.controls.textBoxEmailValue.errors?.email">
+                    Please enter a valid email
+                </div>
+                <div *ngIf="clientSideForm.controls.textBoxEmailValue.errors?.maxlength">
+                    Max length of this field is 100 characters
+                </div>
+            </div>
+        </div>
+        <div class="form-group pt-3">
+            <label for="dropdownValue">Dropdown value<span class="asterisks">*</span></label>
+            <select class="form-select validation-control" formControlName="dropdownValue">
+                <option value="1">Value 1</option>
+                <option value="2">Value 2</option>
+                <option value="3">Value 3</option>
+            </select>
+            <div *ngIf="clientSideForm_HasError('dropdownValue')" class="validation-feedback">
+                <div *ngIf="clientSideForm.controls.dropdownValue.errors?.required">
+                    'Dropdown value' is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group pt-3">
+            <button type="button" class="btn btn-primary btn-block" (click)="clientSideFormSubmit()"
+                label="Submit">
+                Submit
+            </button>
+        </div>
+    </div>
+
+    <!-- Server-side validation -->
+    <hr />
+    <h5 class="color-primary">Server-side validation</h5>
+    <div [formGroup]="serverSideForm" class="col-12 col-md-4">
+        <div class="form-group">
+            <label for="textValue">Text value <span class="asterisks">*</span></label>
+            <input type="text" maxlength="99" class="form-control form-input validation-control" formControlName="textValue" />
+            <div *ngIf="serverSideForm_HasError('textValue')" class="validation-feedback">
+                <div *ngIf="serverSideForm.controls.textValue.errors?.serverError">
+                    {{ serverSideForm.controls.textValue.errors?.serverError }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group pt-3">
+            <label for="emailValue">Email value <span class="asterisks">*</span></label>
+            <input type="text" maxlength="99" class="form-control form-input validation-control" formControlName="emailValue" />
+            <div *ngIf="serverSideForm_HasError('emailValue')" class="validation-feedback">
+                <div *ngIf="serverSideForm.controls.emailValue.errors?.serverError">
+                    {{ serverSideForm.controls.emailValue.errors?.serverError }}
+                </div>
+            </div>
+        </div>
+        <div class="form-group pt-3">
+            <button type="button" class="btn btn-primary btn-block" (click)="serverSideFormSubmit()"
+                label="Submit">
+                Submit
+            </button>
+        </div>
+    </div>
+
+    <br />
+</div>

@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Customer } from '../models/customer';
-import { EmployeeComponent } from '../employee/employee.component';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Employee } from '../models/employee';
 import { EmployeeService } from '../services/employee.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,11 +15,15 @@ export class CustomerComponent implements OnInit {
   customers: any[] = [];
   searchCustomerForm: FormGroup;
 
+
+  
+  showAddCustomer: boolean = false;
+
+
   constructor(private fb: FormBuilder, private employeeService: EmployeeService, private customerService: CustomerService) {
     this.searchCustomerForm = this.fb.group({
       employee: ['', Validators.required]
     });
-
   }
 
   ngOnInit(): void {
@@ -45,6 +47,13 @@ export class CustomerComponent implements OnInit {
         console.log(this.customers);
       });
     }
-
   }
+
+  openModal() {
+    const modalDiv = document.getElementById('myModal');
+    if(modalDiv != null){
+      modalDiv.style.display = 'block';
+    }
+  }
+
 }
